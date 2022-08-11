@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <form action="" [formGroup]="selectForm">
+      <select class="form-select " formControlName="ascendent">
+        <option value=1>All</option>
+        <option value=2>Ascendent</option>
+        <option value=3>Descendet</option>
+      </select>
+      <select class="form-select " formControlName="category">
+        <option value=7>All</option>
+        <option value=1>Sport</option>
+        <option value=2>Pickup</option>
+        <option value=3>Sedan</option>
+        <option value=4>Electric</option>
+        <option value=5>SUV</option>
+        <option value=6>Deluxe</option>
+      </select>
+      <button (click)="filter()">Filter</button>
+    </form>
+    </div>
+    <div class="col-9">
+      <app-cars [ascendent]="ascendent" [category]="category"></app-cars>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+<p>Fill the form</p>
+<form action="" [formGroup]="checkForm">
+    <h5>Enter your id order</h5>
+    <input type="number" class="form-control mb-5" formControlName="id">
+    <h5>Enter your email</h5>
+    <input type="email" class="form-control mb-5" formControlName="email">
+    <p style="color: red;" *ngIf="msgError">Your id order or email are incorrect :(</p>
+    <button (click)="checkOrder()">Check</button>
+</form>

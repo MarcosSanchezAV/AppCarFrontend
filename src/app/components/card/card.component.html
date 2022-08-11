@@ -1,0 +1,16 @@
+<div class="row border rounded my-3 align-items-center" style="height: 200px;">
+    <div class="col-4">
+        <img src="{{img}}" alt="car" width="100%" class=" ms-4">
+    </div>
+    <div class="col-8">
+        <div class="mx-4">
+            <h3>{{name_car}}</h3>
+            <h5>{{type_car}}<br></h5>
+            <h5>Price per day: ${{price | number: '2.'}}</h5>
+            <button class="btn btn-dark float-end" routerLink="/rent/{{id}}">Rent this car</button>
+        </div>
+    </div>
+</div>
+
+
+  

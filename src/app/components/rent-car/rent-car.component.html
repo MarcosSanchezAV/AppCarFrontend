@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-6">
+            <h4 class="mb-5">Fill out the following form to complete the purchase:</h4>
+            <form action="" [formGroup]="rentForm">
+                <h5>Enter your name:</h5>
+                <input type="text" class="form-control mb-5" formControlName="name" placeholder="Your name">
+                <h5>Enter your email:</h5>
+                <input type="email" class="form-control mb-5" formControlName="email" placeholder="Your email">
+            </form>
+            <h5 class="float-start">How many days will you rent the car?</h5>
+            <div class="float-end">
+                <button (click)="decrement()" class="btn btn-dark">-</button>
+                <span class="mx-3 fs-5">{{days}}</span>
+                <button (click)="increment()" class="btn btn-dark">+</button>
+            </div>
+            <button (click)="sendOrder()" routerLink="/msg">Rent the car</button>
+        </div>
+        <div class="col-6">
+            <img src="{{car.img}}" alt="car" width="100%" class="rounded mb-5">
+            <h1>{{car.name_car}}</h1>
+            <h3>Category: {{car.type_car}}</h3>
+            <h3>Total price: ${{days * car.price | number: '2.'}}</h3>
+            <div *ngIf="msgError">
+                <p style="color:red;">Your email {{this.rentForm.value.email}} has rented a car</p>
+                <p style="color:red;">To check your purchase status please click the next button</p>
+                <button routerLink="/checkRent">Check</button>
+            </div>
+        </div>
+    </div>
+</div>

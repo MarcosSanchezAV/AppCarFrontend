@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="row">
+        <h1>Information about your purchase</h1>
+        <div class="col-6">
+            <img src="{{car.img}}" alt="" width="100%" class="rounded">
+            <h3>{{car.name_car}}</h3>
+            <h4>Category: {{car.type_car}}</h4>
+        </div>
+        <div class="col-6">
+            <h4>Days rented: {{order.days}}</h4>
+            <h5>From: {{order.date_start}}</h5>
+            <h5>To: {{order.date_end}}</h5>
+            <h5  *ngIf="!caducated">
+                The rent of this car doesn't finish yet. You should return the car in {{order.date_end}}
+            </h5>
+            <h5 *ngIf="caducated">
+                Your time is out, please return the car
+            </h5>
+            <button (click)="returnCar()" routerLink="">Return</button>
+        </div>
+    </div>
+</div>
+
