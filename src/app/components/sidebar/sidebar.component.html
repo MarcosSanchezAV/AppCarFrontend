@@ -1,23 +1,31 @@
+<div style="background-color: #1693a5; height: 200px;" class="row align-items-center">
+  <h1 class="text-center col-12 text-white ">Welcome to AppCar</h1>
+  <h4 class="text-center col-12 text-white">Here you can find the car you want to drive so much</h4>
+</div>
 <div class="container">
+  <h4 class="mt-5 mb-3">We have different categories so you can choose a car according to your needs. Check it out</h4>
   <div class="row">
     <div class="col-3">
+      <h5>Filter the cars</h5>
       <form action="" [formGroup]="selectForm">
-      <select class="form-select " formControlName="ascendent">
-        <option value=1>All</option>
-        <option value=2>Ascendent</option>
-        <option value=3>Descendet</option>
-      </select>
-      <select class="form-select " formControlName="category">
-        <option value=7>All</option>
-        <option value=1>Sport</option>
-        <option value=2>Pickup</option>
-        <option value=3>Sedan</option>
-        <option value=4>Electric</option>
-        <option value=5>SUV</option>
-        <option value=6>Deluxe</option>
-      </select>
-      <button (click)="filter()">Filter</button>
-    </form>
+        <h6 class="mt-4" style="color: #1693a5">By price:</h6>
+        <select class="form-select " formControlName="ascendent">
+          <option value=1>All</option>
+          <option value=2>Ascendent</option>
+          <option value=3>Descendent</option>
+        </select>
+        <h6 class="mt-4 " style="color: #1693a5">By category:</h6>
+        <select class="form-select " formControlName="category">
+          <option value=7>All</option>
+          <option value=1>Sport</option>
+          <option value=2>Pickup</option>
+          <option value=3>Sedan</option>
+          <option value=4>Electric</option>
+          <option value=5>SUV</option>
+          <option value=6>Deluxe</option>
+        </select>
+        <button (click)="filter()" class="mt-4 btn btn-dark">Filter</button>
+      </form>
     </div>
     <div class="col-9">
       <app-cars [ascendent]="ascendent" [category]="category"></app-cars>

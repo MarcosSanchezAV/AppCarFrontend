@@ -1,9 +1,15 @@
-<p>Fill the form</p>
-<form action="" [formGroup]="checkForm">
-    <h5>Enter your id order</h5>
-    <input type="number" class="form-control mb-5" formControlName="id">
-    <h5>Enter your email</h5>
-    <input type="email" class="form-control mb-5" formControlName="email">
-    <p style="color: red;" *ngIf="msgError">Your id order or email are incorrect :(</p>
-    <button (click)="checkOrder()">Check</button>
-</form>
+<div class="row justify-content-center mt-5">
+    <div class="col-6">
+        <h3 class="mb-3">Fill in the following form to get the status of your order</h3>
+        <form class="p-4" [formGroup]="checkForm" style="background-color: #f0f0d8; border-radius: 20px;">
+            <h5>Enter your order ID:</h5>
+            <p style="font-style: oblique;" *ngIf="errorId">Please, don't forget to enter your order ID</p>
+            <input type="number" class="form-control mb-5" formControlName="id">
+            <h5>Enter your email:</h5>
+            <p style="font-style: oblique;" *ngIf="errorEmail">Please, don't forget to enter your email</p>
+            <input type="email" class="form-control mb-5" formControlName="email">
+            <p style="font-style: oblique; color: #1693a5;" *ngIf="msgError">Your id order or email are incorrect. Try again</p>
+            <button (click)="checkOrder()" class="btn btn-dark">Check status</button>
+        </form>
+    </div>
+</div>

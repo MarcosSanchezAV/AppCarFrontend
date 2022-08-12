@@ -1,3 +1,32 @@
-<p>msg-rent works!</p>
-<p>Your reservation number is: {{order.id}}</p>
-<button routerLink="">Back to the init</button>
+<div class="row align-items-center justify-content-center">
+    <div class="col-6">
+        <h1 class="text-center mb-3 mt-5" style="color: #1693a5; font-weight: bold;">Congratulations!</h1>
+        <h3 class="text-center mb-3">The car has been rented correctly. Here is the order information</h3>
+        <div class="row my-5 p-3 text-white" style="background-color:#1693a5; border-radius: 20px;">
+            <div class="col-6">
+                <h3>Order ID:</h3>
+                <h3>Name: </h3>
+                <h3>Email: </h3>
+                <h3>Days: </h3>
+                <h3>Start date: </h3>
+                <h3>End date: </h3>
+                <h3>Amount: </h3>
+            </div>
+            <div class="col-6">
+                <h3>{{id}}</h3>
+                <h3>{{order.nameUser}}</h3>
+                <h3>{{order.emailUser}}</h3>
+                <h3>{{order.days}}</h3>
+                <h3>{{order.dateStart | date: 'mediumDate' }}</h3>
+                <h3>{{order.dateEnd | date: 'mediumDate'}}</h3>
+                <h3>${{order.amount | number: '2.'}}</h3>
+            </div>
+        </div>
+        <h5 class="mb-3">You can see the status of your order through the following link:</h5>
+        <div style="background-color:#1693a5; border-radius: 20px; height: 50px;" class="text-white row align-items-center justify-content-center mb-5">
+            <h6 class="col text-center">http://localhost:4200/infoRent/{{id}}/{{order.idCar}}/{{order.dateEnd}}</h6>
+        </div>
+        <h5 class="mb-3">Or by entering your order number and email <a routerLink="/checkRent" style="color:#1693a5">here</a></h5>
+        <button class="btn btn-dark" routerLink="">Back to the main</button>
+    </div>
+</div>

@@ -1,23 +1,49 @@
 <div class="container">
-    <div class="row">
-        <h1>Information about your purchase</h1>
+    <h3 class="my-5 text-center">Here is the status of your order</h3>
+    <div class="row p-3" style="background-color:#f0f0d8; border-radius: 20px;">
         <div class="col-6">
-            <img src="{{car.img}}" alt="" width="100%" class="rounded">
-            <h3>{{car.name_car}}</h3>
+            <img src="{{car.img}}" alt="carRented" width="100%">
+            <h3 class="my-4">{{car.name_car}}</h3>
             <h4>Category: {{car.type_car}}</h4>
         </div>
         <div class="col-6">
-            <h4>Days rented: {{order.days}}</h4>
-            <h5>From: {{order.date_start}}</h5>
-            <h5>To: {{order.date_end}}</h5>
-            <h5  *ngIf="!caducated">
-                The rent of this car doesn't finish yet. You should return the car in {{order.date_end}}
-            </h5>
-            <h5 *ngIf="caducated">
-                Your time is out, please return the car
-            </h5>
-            <button (click)="returnCar()" routerLink="">Return</button>
+            <div class="row p-3 text-white" style="background-color:#1693a5; border-radius: 20px;">
+                <div class="col-5">
+                    <h5 class="mb-4">Order ID:</h5>
+                    <h5 class="mb-4">Name: </h5>
+                    <h5 class="mb-4">Email: </h5>
+                    <h5 class="mb-4">Days: </h5>
+                    <h5 class="mb-4">Start date: </h5>
+                    <h5 class="mb-4">End date: </h5>
+                    <h5>Amount: </h5>
+                </div>
+                <div class="col-7">
+                    <h5 class="mb-4">{{id}}</h5>
+                    <h5 class="mb-4">{{order.nameUser}}</h5>
+                    <h5 class="mb-4">{{order.emailUser}}</h5>
+                    <h5 class="mb-4">{{order.days}}</h5>
+                    <h5 class="mb-4">{{order.dateStart | date: 'mediumDate' }}</h5>
+                    <h5 class="mb-4">{{order.dateEnd | date: 'mediumDate'}}</h5>
+                    <h5>${{order.amount | number: '2.'}}</h5>
+                </div>
+            </div>
+        </div>
+    <div *ngIf="!order.delivered">
+        <h5 *ngIf="!caducated" class="mt-5 text-center">
+            The deadline to deliver the car is {{order.dateEnd | date: 'mediumDate'}}, but you can deliver it now if
+            you like
+        </h5>
+        <h5 *ngIf="caducated">
+            The deadline to deliver the car has expired. Please return the car
+        </h5>
+        <div class="row justify-content-center mb-5 mt-3">
+            <button (click)="returnCar()" routerLink="/thanks" class="col-2 btn btn-dark">Return</button>
+        </div>
+    </div>
+    <div *ngIf="order.delivered" class="text-center mt-5">
+        <h5>This car has already been delivered. If you want to rent it again follow <a style="color:#1693a5" routerLink="/rent/{{order.idCar}}"> this link.</a></h5>
+        <div class="row justify-content-center mb-5 mt-3">
+            <button routerLink="" class="col-3 btn btn-dark">Back to main page</button>
         </div>
     </div>
 </div>
-

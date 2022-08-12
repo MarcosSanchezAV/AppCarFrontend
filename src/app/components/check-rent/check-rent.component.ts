@@ -13,6 +13,8 @@ export class CheckRentComponent implements OnInit {
   checkForm: FormGroup = new FormGroup({});
   msgError: boolean = false;
   order: any;
+  errorId: boolean = false;
+  errorEmail: boolean = false;
 
   constructor(private orderService: OrderService, private route: Router) { }
 
@@ -24,6 +26,18 @@ export class CheckRentComponent implements OnInit {
   }
 
   checkOrder(): void {
+    if (this.checkForm.value.id == '' || this.checkForm.value.email == '') {
+      if (this.checkForm.value.id == '') {
+        this.errorId = true;
+      } else {
+        this.errorId = false;
+      }
+      if (this.checkForm.value.email == '') {
+        this.errorEmail = true;
+      } else {
+        this.errorId = false;
+      }
+    } else {
     this.orderService.getOrder(this.checkForm.value.id, this.checkForm.value.email).subscribe(resp => {
       if (resp == null) {
         console.log("Order not found");
@@ -35,9 +49,10 @@ export class CheckRentComponent implements OnInit {
       }
     }); 
   }
+  }
 
   goInfo(): void {
-    this.route.navigate(['/infoRent/' + this.order.id + '/' + this.order.id_car + '/' + this.order.date_end]);
+    this.route.navigate(['/infoRent/' + this.order.id + '/' + this.order.idCar + '/' + this.order.dateEnd]);
   }
 
 }

@@ -5,6 +5,7 @@ import { InfoRentComponent } from './components/info-rent/info-rent.component';
 import { MsgRentComponent } from './components/msg-rent/msg-rent.component';
 import { RentCarComponent } from './components/rent-car/rent-car.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { ThanksComponent } from './components/thanks/thanks.component';
 
 const routes: Routes = [
   {
@@ -24,8 +25,12 @@ const routes: Routes = [
     component: CheckRentComponent
   },
   {
-    path:'infoRent/:id/:id_car/:date_end',
+    path:'infoRent/:id/:idCar/:dateEnd',
     component: InfoRentComponent
+  },
+  {
+    path:'thanks',
+    component: ThanksComponent
   }
 ];
 

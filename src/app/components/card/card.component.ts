@@ -8,10 +8,10 @@ import { Component, OnInit, Input } from '@angular/core';
 export class CardComponent implements OnInit {
 
   @Input() id: number = 0;
-  @Input() name_car: string = 'Name Car';
+  @Input() nameCar: string = 'Name Car';
   @Input() price: number = 0;
   @Input() img: string = '';
-  @Input() type_car: string = 'Type_car';
+  @Input() typeCar: string = 'Type_car';
   @Input() available: boolean = false;
 
   constructor() { }

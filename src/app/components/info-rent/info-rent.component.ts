@@ -10,20 +10,21 @@ import { OrderService } from 'src/app/services/order.service';
 })
 export class InfoRentComponent implements OnInit {
   id!: string | null;
-  id_car!: string | null;
-  date_end!: string | null;
+  idCar!: string | null;
+  dateEnd!: string | null;
   order: any;
   car: any;
   caducated: any;
+  delivered: any;
   constructor(private orderService: OrderService, private carService: CarServiceService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
-    this.id_car = this.route.snapshot.paramMap.get('id_car');
-    this.date_end = this.route.snapshot.paramMap.get('date_end');
+    this.idCar = this.route.snapshot.paramMap.get('idCar');
+    this.dateEnd = this.route.snapshot.paramMap.get('dateEnd');
     this.orderService.getOrderId(this.id).subscribe(resp => this.order = resp);
-    this.carService.getCar(this.id_car).subscribe(resp => this.car = resp);
-    this.orderService.getCaducated(this.date_end).subscribe(resp => this.caducated = resp );
+    this.carService.getCar(this.idCar).subscribe(resp => this.car = resp);
+    this.orderService.getCaducated(this.dateEnd).subscribe(resp => this.caducated = resp );
   }
 
   returnCar() {

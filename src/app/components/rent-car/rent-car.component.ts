@@ -16,6 +16,8 @@ export class RentCarComponent implements OnInit {
   car: any;
   days!: number;
   msgError: boolean = false;
+  errorName: boolean = false;
+  errorEmail: boolean = false;
 
   constructor(private route: ActivatedRoute, private rentCarService: CarServiceService, private orderService: OrderService, private router: Router) { }
 
@@ -41,14 +43,28 @@ export class RentCarComponent implements OnInit {
   }
 
   sendOrder(): void {
+    if (this.rentForm.value.name == '' || this.rentForm.value.email == '') {
+      if (this.rentForm.value.name == '') {
+      this.errorName = true;
+      } else {
+        this.errorName = false;
+      }
+      if (this.rentForm.value.email == '') {
+        this.errorEmail = true;
+      } else {
+        this.errorEmail = false;
+      }
+    } else {
+      this.errorEmail = false;
+      this.errorName = false;
     this.orderService.getOrderEmail(this.rentForm.value.email).subscribe(resp => {
       if (resp == null) {
         this.orderService.createOrder({
-          id_car: this.car.id,
+          idCar: this.car.id,
           days: this.days,
           amount: this.days * this.car.price,
-          name_user: this.rentForm.value.name,
-          email_user: this.rentForm.value.email
+          nameUser: this.rentForm.value.name,
+          emailUser: this.rentForm.value.email
         }).subscribe(resp => console.log("Order sent"));
         this.rentCarService.setAvailable(false, this.car.id).subscribe(resp => console.log("Set successful!"));
         this.router.navigate(['/msg/' + this.rentForm.value.email]);
@@ -58,6 +74,7 @@ export class RentCarComponent implements OnInit {
       }
       
     });
+  }
     
   }
 
